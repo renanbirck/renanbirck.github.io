@@ -1,0 +1,4 @@
+baseURL = "http://renanbirck.github.io/"
+languageCode = "en-us"
+theme = "diary"
+title = "Tópicos Avançados em Temas Aleatórios"
