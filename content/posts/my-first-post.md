@@ -1,7 +1,6 @@
 ---
 title: "My First Post"
 date: 2021-05-03T13:05:54-03:00
-draft: true
 enableMathJax: true
 ---
 
