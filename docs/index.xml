@@ -5,8 +5,32 @@
     <description>Recent content on Tópicos Avançados em Temas Aleatórios</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Mon, 03 May 2021 15:35:54 -0300</lastBuildDate>
     
         <atom:link href="https://renanbirck.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>My First Post</title>
+        <link>https://renanbirck.github.io/posts/my-first-post/</link>
+        <pubDate>Mon, 03 May 2021 15:35:54 -0300</pubDate>
+        
+        <guid>https://renanbirck.github.io/posts/my-first-post/</guid>
+        <description>Tópicos Avançados em Temas Aleatórios https://renanbirck.github.io/posts/my-first-post/ -&lt;p&gt;Olá mundo!&lt;/p&gt;
+&lt;h1 id=&#34;teste-com-trecho-longo&#34;&gt;Teste com trecho longo&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Nós, representantes do povo brasileiro, reunidos em Assembléia Nacional Constituinte para instituir um Estado Democrático, destinado a assegurar o exercício dos direitos sociais e individuais, a liberdade, a segurança, o bem-estar, o desenvolvimento, a igualdade e a justiça como valores supremos de uma sociedade fraterna, pluralista e sem preconceitos, fundada na harmonia social e comprometida, na ordem interna e internacional, com a solução pacífica das controvérsias, promulgamos, sob a proteção de Deus, a seguinte CONSTITUIÇÃO DA REPÚBLICA FEDERATIVA DO BRASIL.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;teste-com-fórmula&#34;&gt;Teste com fórmula&lt;/h1&gt;
+&lt;p&gt;É fácil ver que $ \frac{x}{x+y} = \int_0^{\infty} \dfrac{\sin(x)}{\cos(x-\alpha)} dx $ para todo $\alpha &amp;gt; 0$. Caso contrário, você precisa estudar mais.&lt;/p&gt;
+&lt;h1 id=&#34;teste-com-imagem&#34;&gt;Teste com imagem&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://renanbirck.github.io/images/nethack.png&#34; alt=&#34;Imagem de teste&#34;&gt; Figura 1: blá blá blá.&lt;/p&gt;
+&lt;h1 id=&#34;como-eu-blogo&#34;&gt;Como eu blogo?&lt;/h1&gt;
+&lt;p&gt;Chamando o &lt;a href=&#34;https://gohugo.io&#34;&gt;Hugo&lt;/a&gt;. Como ele não depende de um &lt;a href=&#34;https://renanbirck.github.io/images/BancoDados.jpg&#34;&gt;banco de dados&lt;/a&gt;, ele pode ser hospedado em qualquer coisa que tenha um servidor web.&lt;/p&gt;
+&lt;p&gt;Não sou nenhum grande &lt;a href=&#34;https://knowyourmeme.com/memes/graphic-design-is-my-passion&#34;&gt;designer gráfico&lt;/a&gt;, então uso o excelente tema &lt;a href=&#34;https://themes.gohugo.io/hugo-theme-diary/&#34;&gt;Diary&lt;/a&gt;.&lt;/p&gt;
+- https://renanbirck.github.io/posts/my-first-post/ - </description>
+        </item>
     
     
   </channel>
