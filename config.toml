@@ -3,3 +3,24 @@ languageCode = "en-us"
 theme = "diary"
 title = "Tópicos Avançados em Temas Aleatórios"
 publishDir = "docs"
+copyright = "2021- Renan Birck Pinheiro"
+
+[params]
+subtitle = "Depois de muito tempo, um cantinho na tal da internet que a molecada usa."
+
+[[menu.main]]
+url = "/posts"
+name = "Edições anteriores"
+weight = 1
+[[menu.main]]
+url = "/categories"
+name = "Categorias"
+weight = 2
+[[menu.main]]
+url = "/tags"
+name = "Tags"
+weight = 3
+[[menu.main]]
+url = "/index.xml"
+name = "RSS"
+weight = 4

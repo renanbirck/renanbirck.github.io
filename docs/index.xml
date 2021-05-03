@@ -5,9 +5,25 @@
     <description>Recent content on Tópicos Avançados em Temas Aleatórios</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 03 May 2021 15:40:32 -0300</lastBuildDate>
+    <copyright>© 2021- Renan Birck Pinheiro</copyright>
+    <lastBuildDate>Mon, 03 May 2021 15:42:30 -0300</lastBuildDate>
     
         <atom:link href="https://renanbirck.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Como eu blogo?</title>
+        <link>https://renanbirck.github.io/posts/como-eu-blogo/</link>
+        <pubDate>Mon, 03 May 2021 15:42:30 -0300</pubDate>
+        
+        <guid>https://renanbirck.github.io/posts/como-eu-blogo/</guid>
+        <description>Tópicos Avançados em Temas Aleatórios https://renanbirck.github.io/posts/como-eu-blogo/ -&lt;h1 id=&#34;como-eu-blogo&#34;&gt;Como eu blogo?&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io&#34;&gt;Chamando o Hugo&lt;/a&gt;. Dessa forma, consigo escrever documentos em qualquer editor de texto.
+Após escrever o texto, eu executo o &lt;code&gt;hugo&lt;/code&gt; e verifico o resultado. Se satisfeito, basta um &lt;code&gt;commit&lt;/code&gt; e um &lt;code&gt;push&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Um projeto futuro para um dia chuvoso é automatizar o processo.&lt;/p&gt;
+- https://renanbirck.github.io/posts/como-eu-blogo/ - © 2021- Renan Birck Pinheiro</description>
+        </item>
     
     
     
@@ -18,7 +34,7 @@
         
         <guid>https://renanbirck.github.io/posts/hello-world/</guid>
         <description>Tópicos Avançados em Temas Aleatórios https://renanbirck.github.io/posts/hello-world/ -&lt;p&gt;Olá mundo!&lt;/p&gt;
-- https://renanbirck.github.io/posts/hello-world/ - </description>
+- https://renanbirck.github.io/posts/hello-world/ - © 2021- Renan Birck Pinheiro</description>
         </item>
     
     
