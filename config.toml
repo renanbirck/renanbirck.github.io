@@ -1,5 +1,6 @@
 baseURL = "https://renanbirck.github.io/"
-languageCode = "en-us"
+languageCode = "pt-br"
+DefaultContentLanguage = "pt-br"
 theme = "diary"
 title = "Tópicos Avançados em Temas Aleatórios"
 publishDir = "docs"
