@@ -3,7 +3,7 @@ languageCode = "en-us"
 theme = "diary"
 title = "Tópicos Avançados em Temas Aleatórios"
 publishDir = "docs"
-copyright = "2021- Renan Birck Pinheiro"
+copyright = "2021 Renan Birck Pinheiro"
 
 [params]
 subtitle = "Depois de muito tempo, um cantinho na tal da internet que a molecada usa."
