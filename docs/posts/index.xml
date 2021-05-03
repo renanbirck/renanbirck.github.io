@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Tópicos Avançados em Temas Aleatórios</title>
+    <link>https://renanbirck.github.io/posts/</link>
+    <description>Recent content in Posts on Tópicos Avançados em Temas Aleatórios</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 May 2021 15:40:32 -0300</lastBuildDate><atom:link href="https://renanbirck.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Olá mundo!</title>
+      <link>https://renanbirck.github.io/posts/hello-world/</link>
+      <pubDate>Mon, 03 May 2021 15:40:32 -0300</pubDate>
+      
+      <guid>https://renanbirck.github.io/posts/hello-world/</guid>
+      <description>Olá mundo!</description>
+    </item>
+    
+  </channel>
+</rss>
