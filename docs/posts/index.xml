@@ -15,7 +15,8 @@
       
       <guid>https://renanbirck.github.io/posts/como-eu-blogo/</guid>
       <description>Como eu blogo? Chamando o Hugo. Dessa forma, consigo escrever documentos em qualquer editor de texto. Após escrever o texto, eu executo o hugo e verifico o resultado. Se satisfeito, basta um commit e um push.
-Um projeto futuro para um dia chuvoso é automatizar o processo.</description>
+Um projeto futuro para um dia chuvoso é automatizar o processo, utilizando GitHub Actions.
+Foto: Wilhelm Gunkel/Unsplash</description>
     </item>
     
     <item>

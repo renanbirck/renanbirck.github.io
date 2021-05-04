@@ -19,9 +19,11 @@
         
         <guid>https://renanbirck.github.io/posts/como-eu-blogo/</guid>
         <description>Tópicos Avançados em Temas Aleatórios https://renanbirck.github.io/posts/como-eu-blogo/ -&lt;h1 id=&#34;como-eu-blogo&#34;&gt;Como eu blogo?&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://renanbirck.github.io/images/typewriter.jpg&#34; alt=&#34;typewriter&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://gohugo.io&#34;&gt;Chamando o Hugo&lt;/a&gt;. Dessa forma, consigo escrever documentos em qualquer editor de texto.
 Após escrever o texto, eu executo o &lt;code&gt;hugo&lt;/code&gt; e verifico o resultado. Se satisfeito, basta um &lt;code&gt;commit&lt;/code&gt; e um &lt;code&gt;push&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Um projeto futuro para um dia chuvoso é automatizar o processo.&lt;/p&gt;
+&lt;p&gt;Um projeto futuro para um dia chuvoso é automatizar o processo, utilizando &lt;a href=&#34;https://github.com/features/actions&#34;&gt;GitHub Actions&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Foto: &lt;a href=&#34;https://unsplash.com/@wilhelmgunkel&#34;&gt;Wilhelm Gunkel&lt;/a&gt;/&lt;a href=&#34;https://unsplash.com/s/photos/typewriter&#34;&gt;Unsplash&lt;/a&gt;&lt;/p&gt;
 - https://renanbirck.github.io/posts/como-eu-blogo/ - 2021 Renan Birck Pinheiro</description>
         </item>
     
