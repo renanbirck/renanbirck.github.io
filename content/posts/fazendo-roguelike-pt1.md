@@ -1,7 +1,11 @@
 ---
-title: "Olá mundo!"
-date: 2021-07-13T15:40:32-03:00
-draft: true
+title: "Fazendo um roguelike simples: parte 1"
+date: 2021-07-13T10:40:32-03:00
+draft: false 
+tags: 
+  - desenvolvimento
+  - roguelike
+  - python
 enableMathJax: true
 ---
 
@@ -12,14 +16,41 @@ A definição de _roguelike_ é um jogo com níveis gerados de forma procedural 
 
 Dessa forma surgiram _roguelikes_ com temática pós-apocalipse ([Cataclysm: Dark Days Ahead](https://cataclysmdda.org/)), espaço ([FTL: Faster than Light](https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/)) e simulação ([Dwarf Fortress](https://www.bay12games.com/dwarves/)) entre outros; mas o mais clássico é o [nethack](https://nethack.org).
 
-Neste projetinho de tutorial, vamos criar um _roguelike_ simples: você precisa descer alguns níveis, matar monstros e recuperar a Chave 
-que permiti-lo-á sair da masmorra.
+Neste projetinho de tutorial, vamos criar um _roguelike_ simples: você precisa descer alguns níveis, matar monstros e recuperar a Chave que permiti-lo-á sair da masmorra. O conteúdo desse tutorial foi adaptado [daqui](http://rogueliketutorials.com/tutorials/tcod/v2/part-1/).
+
+A primeira parte irá colocar um personagem na tela e posteriormente irá movê-lo.
 
 ### 1. Instalando as bibliotecas
 
 Para desenvolver nosso _roguelike_, vamos utilizar Python e a `libtcod`. Esse tutorial presume que você usa um sistema operacional de verdade (leia-se: Linux, \*BSD, macOS etc...), mas talvez seja possível repeti-lo no Windows.
 
+Não queremos mexer nas bibliotecas do sistema, então vamos usar [venv](https://docs.python.org/3/library/venv.html):
+
+    python3 -m venv ~/src/minirogue   # Adaptar conforme a organização de diretórios do seu projeto.
+
+Após, vamos criar um arquivo `requirements.txt` para coordenar a instalação dos pacotes necessários. Crie um arquivo com o nome anteriormente referido e com as linhas:
+
+    tcod>=11.13
+    numpy>=1.18
+
+e, para instalar as dependências, bastará digitar `pip install -r requirements.txt`. Se apareceu `successfully installed tcod-12.7.2`, pronto. A partir daqui, iremos trabalhar dentro do `venv` que criamos acima; portanto, ative ele digitando `source bin/activate` dentro do diretório criado acima.
+
+Para nos certificarmos que a `libtcod` instalou:
+
+    $ python3
+    Python 3.9.6 (default, Jun 29 2021, 00:00:00) 
+    [GCC 11.1.1 20210531 (Red Hat 11.1.1-3)] on linux
+    Type "help", "copyright", "credits" or "license" for more information.
+    >>> import tcod
+    >>>  # não deverá acontecer nenhum erro.
+
+### 1.5. Preparação: baixar um arquivo de fontes
+Baixe o [arquivo](http://rogueliketutorials.com/images/dejavu10x10_gs_tc.png) e coloca na mesma pasta do projeto. Será necessário depois.
+
 ### 2. Colocando nosso personagem na tela
+
+Vamos criar um arquivo `main.py`, com o conteúdo abaixo:
+
 
 ### 3. Movendo nosso personagem
 

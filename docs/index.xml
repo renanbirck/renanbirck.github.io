@@ -6,9 +6,48 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>2021 Renan Birck Pinheiro</copyright>
-    <lastBuildDate>Mon, 03 May 2021 15:42:30 -0300</lastBuildDate>
+    <lastBuildDate>Tue, 13 Jul 2021 10:40:32 -0300</lastBuildDate>
     
         <atom:link href="https://renanbirck.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Fazendo um roguelike simples: parte 1</title>
+        <link>https://renanbirck.github.io/posts/fazendo-roguelike-pt1/</link>
+        <pubDate>Tue, 13 Jul 2021 10:40:32 -0300</pubDate>
+        
+        <guid>https://renanbirck.github.io/posts/fazendo-roguelike-pt1/</guid>
+        <description>Tópicos Avançados em Temas Aleatórios https://renanbirck.github.io/posts/fazendo-roguelike-pt1/ -&lt;p&gt;Como jogador de &lt;a href=&#34;https://nethack.org&#34;&gt;nethack&lt;/a&gt; que sou, paixão que descobri durante o trabalho em casa forçado pela covid, decidi que era hora de eu desenvolver meu próprio roguelike&amp;hellip; mas o que é um roguelike, você caro leitor pode estar se perguntando?&lt;/p&gt;
+&lt;p&gt;A definição de &lt;em&gt;roguelike&lt;/em&gt; é um jogo com níveis gerados de forma procedural (isto é, por algoritmos e não de forma manual) e com morte permanente (morreu? que Deus o tenha); a maioria deles tem narrativa épica, mas isso não é um requisito do estilo em si e nem é preciso ser leitor desse gênero para apreciar os jogos. (eu mesmo comecei a ler &lt;em&gt;O Hobbit&lt;/em&gt;, mas dormi no meio).&lt;/p&gt;
+&lt;p&gt;Dessa forma surgiram &lt;em&gt;roguelikes&lt;/em&gt; com temática pós-apocalipse (&lt;a href=&#34;https://cataclysmdda.org/&#34;&gt;Cataclysm: Dark Days Ahead&lt;/a&gt;), espaço (&lt;a href=&#34;https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/&#34;&gt;FTL: Faster than Light&lt;/a&gt;) e simulação (&lt;a href=&#34;https://www.bay12games.com/dwarves/&#34;&gt;Dwarf Fortress&lt;/a&gt;) entre outros; mas o mais clássico é o &lt;a href=&#34;https://nethack.org&#34;&gt;nethack&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Neste projetinho de tutorial, vamos criar um &lt;em&gt;roguelike&lt;/em&gt; simples: você precisa descer alguns níveis, matar monstros e recuperar a Chave que permiti-lo-á sair da masmorra. O conteúdo desse tutorial foi adaptado &lt;a href=&#34;http://rogueliketutorials.com/tutorials/tcod/v2/part-1/&#34;&gt;daqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;A primeira parte irá colocar um personagem na tela e posteriormente irá movê-lo.&lt;/p&gt;
+&lt;h3 id=&#34;1-instalando-as-bibliotecas&#34;&gt;1. Instalando as bibliotecas&lt;/h3&gt;
+&lt;p&gt;Para desenvolver nosso &lt;em&gt;roguelike&lt;/em&gt;, vamos utilizar Python e a &lt;code&gt;libtcod&lt;/code&gt;. Esse tutorial presume que você usa um sistema operacional de verdade (leia-se: Linux, *BSD, macOS etc&amp;hellip;), mas talvez seja possível repeti-lo no Windows.&lt;/p&gt;
+&lt;p&gt;Não queremos mexer nas bibliotecas do sistema, então vamos usar &lt;a href=&#34;https://docs.python.org/3/library/venv.html&#34;&gt;venv&lt;/a&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;python3 -m venv ~/src/minirogue   # Adaptar conforme a organização de diretórios do seu projeto.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Após, vamos criar um arquivo &lt;code&gt;requirements.txt&lt;/code&gt; para coordenar a instalação dos pacotes necessários. Crie um arquivo com o nome anteriormente referido e com as linhas:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tcod&amp;gt;=11.13
+numpy&amp;gt;=1.18
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;e, para instalar as dependências, bastará digitar &lt;code&gt;pip install -r requirements.txt&lt;/code&gt;. Se apareceu &lt;code&gt;successfully installed tcod-12.7.2&lt;/code&gt;, pronto. A partir daqui, iremos trabalhar dentro do &lt;code&gt;venv&lt;/code&gt; que criamos acima; portanto, ative ele digitando &lt;code&gt;source bin/activate&lt;/code&gt; dentro do diretório criado acima.&lt;/p&gt;
+&lt;p&gt;Para nos certificarmos que a &lt;code&gt;libtcod&lt;/code&gt; instalou:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3
+Python 3.9.6 (default, Jun 29 2021, 00:00:00) 
+[GCC 11.1.1 20210531 (Red Hat 11.1.1-3)] on linux
+Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&amp;quot; or &amp;quot;license&amp;quot; for more information.
+&amp;gt;&amp;gt;&amp;gt; import tcod
+&amp;gt;&amp;gt;&amp;gt;  # não deverá acontecer nenhum erro.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;15-preparação-baixar-um-arquivo-de-fontes&#34;&gt;1.5. Preparação: baixar um arquivo de fontes&lt;/h3&gt;
+&lt;p&gt;Baixe o &lt;a href=&#34;http://rogueliketutorials.com/images/dejavu10x10_gs_tc.png&#34;&gt;arquivo&lt;/a&gt; e coloca na mesma pasta do projeto. Será necessário depois.&lt;/p&gt;
+&lt;h3 id=&#34;2-colocando-nosso-personagem-na-tela&#34;&gt;2. Colocando nosso personagem na tela&lt;/h3&gt;
+&lt;p&gt;Vamos criar um arquivo &lt;code&gt;main.py&lt;/code&gt;, com o conteúdo abaixo:&lt;/p&gt;
+&lt;h3 id=&#34;3-movendo-nosso-personagem&#34;&gt;3. Movendo nosso personagem&lt;/h3&gt;
+- https://renanbirck.github.io/posts/fazendo-roguelike-pt1/ - 2021 Renan Birck Pinheiro</description>
+        </item>
     
     
     
