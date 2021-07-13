@@ -88,7 +88,7 @@ Vamos criar um arquivo `main.py`, com o conteúdo abaixo:
         main()
 {{< / highlight >}}
 
-Vamos explicar linha por linha:
+Vamos explicar, em linhas gerais:
 
 * `screen_width, screen_height` são as dimensões da tela (no caso, 80x50).
 * `tileset` recebe o arquivo de ícones (ou, no nosso caso, a fonte a ser usada).
