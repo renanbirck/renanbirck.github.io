@@ -52,5 +52,41 @@ Baixe o [arquivo](http://rogueliketutorials.com/images/dejavu10x10_gs_tc.png) e 
 Vamos criar um arquivo `main.py`, com o conteúdo abaixo:
 
 
+{{< highlight python >}}
+
+    #!/usr/bin/env python3
+    #
+    # minirogue: a simple roguelike game for testing libtcod.
+    #
+    # (c) 2021- Renan Birck Pinheiro [renan.birck.pinheiro at Gmail's "Google" mail service]
+    #
+    #
+
+    import tcod
+
+    def main():
+        screen_width, screen_height = 80, 50  # Altura da tela
+        
+        # Carregar a fonte que anteriormente foi baixada no diretório atual.
+        tileset = tcod.tileset.load_tilesheet(
+            "dejavu10x10_gs_tc.png", 32, 8, tcod.tileset.CHARMAP_TCOD
+        )
+        
+        # Criar a interface...
+        with tcod.context.new_terminal(screen_width, screen_height, tileset=tileset,
+                                    title="MiniRogue", vsync=True) as context:
+            root_console = tcod.Console(screen_width, screen_height, order="F")
+            while True:
+                # Desenhar a tela, até a hora em que PEDIR PRA SAIR
+                root_console.print(x=1, y=1, string="@")
+                context.present(root_console)
+                for event in tcod.event.wait():
+                    if event.type == "QUIT": # PEDIU PRA SAIR
+                        raise SystemExit()
+
+    if __name__ == "__main__":
+        main()
+{{< / highlight >}}
+
 ### 3. Movendo nosso personagem
 

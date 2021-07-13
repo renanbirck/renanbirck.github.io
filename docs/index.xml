@@ -45,6 +45,38 @@ Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&
 &lt;p&gt;Baixe o &lt;a href=&#34;http://rogueliketutorials.com/images/dejavu10x10_gs_tc.png&#34;&gt;arquivo&lt;/a&gt; e coloca na mesma pasta do projeto. Será necessário depois.&lt;/p&gt;
 &lt;h3 id=&#34;2-colocando-nosso-personagem-na-tela&#34;&gt;2. Colocando nosso personagem na tela&lt;/h3&gt;
 &lt;p&gt;Vamos criar um arquivo &lt;code&gt;main.py&lt;/code&gt;, com o conteúdo abaixo:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;#!/usr/bin/env python3&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;# minirogue: a simple roguelike game for testing libtcod.&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;# (c) 2021- Renan Birck Pinheiro [renan.birck.pinheiro at Gmail&amp;#39;s &amp;#34;Google&amp;#34; mail service]&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;
+    &lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;
+
+    &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; tcod
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;main&lt;/span&gt;():
+        screen_width, screen_height &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;80&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# Altura da tela&lt;/span&gt;
+        
+        &lt;span style=&#34;color:#75715e&#34;&gt;# Carregar a fonte que anteriormente foi baixada no diretório atual.&lt;/span&gt;
+        tileset &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tcod&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;tileset&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;load_tilesheet(
+            &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;dejavu10x10_gs_tc.png&amp;#34;&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;32&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;, tcod&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;tileset&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;CHARMAP_TCOD
+        )
+        
+        &lt;span style=&#34;color:#75715e&#34;&gt;# Criar a interface...&lt;/span&gt;
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;with&lt;/span&gt; tcod&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;context&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;new_terminal(screen_width, screen_height, tileset&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;tileset,
+                                    title&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;MiniRogue&amp;#34;&lt;/span&gt;, vsync&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; context:
+            root_console &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; tcod&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Console(screen_width, screen_height, order&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;F&amp;#34;&lt;/span&gt;)
+            &lt;span style=&#34;color:#66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;:
+                &lt;span style=&#34;color:#75715e&#34;&gt;# Desenhar a tela, até a hora em que PEDIR PRA SAIR&lt;/span&gt;
+                root_console&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;print(x&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, y&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, string&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;@&amp;#34;&lt;/span&gt;)
+                context&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;present(root_console)
+                &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; event &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; tcod&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;event&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;wait():
+                    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; event&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;type &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;QUIT&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#75715e&#34;&gt;# PEDIU PRA SAIR&lt;/span&gt;
+                        &lt;span style=&#34;color:#66d9ef&#34;&gt;raise&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;SystemExit&lt;/span&gt;()
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+        main()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&#34;3-movendo-nosso-personagem&#34;&gt;3. Movendo nosso personagem&lt;/h3&gt;
 - https://renanbirck.github.io/posts/fazendo-roguelike-pt1/ - 2021 Renan Birck Pinheiro</description>
         </item>

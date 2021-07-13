@@ -562,6 +562,38 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <p>Baixe o <a href="http://rogueliketutorials.com/images/dejavu10x10_gs_tc.png">arquivo</a> e coloca na mesma pasta do projeto. Será necessário depois.</p>
 <h3 id="2-colocando-nosso-personagem-na-tela">2. Colocando nosso personagem na tela</h3>
 <p>Vamos criar um arquivo <code>main.py</code>, com o conteúdo abaixo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#75715e">#!/usr/bin/env python3</span>
+    <span style="color:#75715e">#</span>
+    <span style="color:#75715e"># minirogue: a simple roguelike game for testing libtcod.</span>
+    <span style="color:#75715e">#</span>
+    <span style="color:#75715e"># (c) 2021- Renan Birck Pinheiro [renan.birck.pinheiro at Gmail&#39;s &#34;Google&#34; mail service]</span>
+    <span style="color:#75715e">#</span>
+    <span style="color:#75715e">#</span>
+
+    <span style="color:#f92672">import</span> tcod
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+        screen_width, screen_height <span style="color:#f92672">=</span> <span style="color:#ae81ff">80</span>, <span style="color:#ae81ff">50</span>  <span style="color:#75715e"># Altura da tela</span>
+        
+        <span style="color:#75715e"># Carregar a fonte que anteriormente foi baixada no diretório atual.</span>
+        tileset <span style="color:#f92672">=</span> tcod<span style="color:#f92672">.</span>tileset<span style="color:#f92672">.</span>load_tilesheet(
+            <span style="color:#e6db74">&#34;dejavu10x10_gs_tc.png&#34;</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">8</span>, tcod<span style="color:#f92672">.</span>tileset<span style="color:#f92672">.</span>CHARMAP_TCOD
+        )
+        
+        <span style="color:#75715e"># Criar a interface...</span>
+        <span style="color:#66d9ef">with</span> tcod<span style="color:#f92672">.</span>context<span style="color:#f92672">.</span>new_terminal(screen_width, screen_height, tileset<span style="color:#f92672">=</span>tileset,
+                                    title<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;MiniRogue&#34;</span>, vsync<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>) <span style="color:#66d9ef">as</span> context:
+            root_console <span style="color:#f92672">=</span> tcod<span style="color:#f92672">.</span>Console(screen_width, screen_height, order<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;F&#34;</span>)
+            <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+                <span style="color:#75715e"># Desenhar a tela, até a hora em que PEDIR PRA SAIR</span>
+                root_console<span style="color:#f92672">.</span>print(x<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, y<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, string<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;@&#34;</span>)
+                context<span style="color:#f92672">.</span>present(root_console)
+                <span style="color:#66d9ef">for</span> event <span style="color:#f92672">in</span> tcod<span style="color:#f92672">.</span>event<span style="color:#f92672">.</span>wait():
+                    <span style="color:#66d9ef">if</span> event<span style="color:#f92672">.</span>type <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;QUIT&#34;</span>: <span style="color:#75715e"># PEDIU PRA SAIR</span>
+                        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">SystemExit</span>()
+
+    <span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+        main()</code></pre></div>
 <h3 id="3-movendo-nosso-personagem">3. Movendo nosso personagem</h3>
 
                     
