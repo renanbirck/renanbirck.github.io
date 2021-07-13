@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>desenvolvimento on Tópicos Avançados em Temas Aleatórios</title>
+    <link>https://renanbirck.github.io/tags/desenvolvimento/</link>
+    <description>Recent content in desenvolvimento on Tópicos Avançados em Temas Aleatórios</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>pt-br</language>
+    <copyright>2021 Renan Birck Pinheiro</copyright>
+    <lastBuildDate>Tue, 13 Jul 2021 10:40:32 -0300</lastBuildDate><atom:link href="https://renanbirck.github.io/tags/desenvolvimento/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fazendo um roguelike simples: parte 1</title>
+      <link>https://renanbirck.github.io/posts/fazendo-roguelike-pt1/</link>
+      <pubDate>Tue, 13 Jul 2021 10:40:32 -0300</pubDate>
+      
+      <guid>https://renanbirck.github.io/posts/fazendo-roguelike-pt1/</guid>
+      <description>Como jogador de nethack que sou, paixão que descobri durante o trabalho em casa forçado pela covid, decidi que era hora de eu desenvolver meu próprio roguelike&amp;hellip; mas o que é um roguelike, você caro leitor pode estar se perguntando?
+A definição de roguelike é um jogo com níveis gerados de forma procedural (isto é, por algoritmos e não de forma manual) e com morte permanente (morreu? que Deus o tenha); a maioria deles tem narrativa épica, mas isso não é um requisito do estilo em si e nem é preciso ser leitor desse gênero para apreciar os jogos.</description>
+    </item>
+    
+  </channel>
+</rss>
