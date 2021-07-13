@@ -88,5 +88,12 @@ Vamos criar um arquivo `main.py`, com o conteúdo abaixo:
         main()
 {{< / highlight >}}
 
+Vamos explicar linha por linha:
+
+* `screen_width, screen_height` são as dimensões da tela (no caso, 80x50).
+* `tileset` recebe o arquivo de ícones (ou, no nosso caso, a fonte a ser usada).
+* Após, é inicializado um terminal e um console nas dimensões acima definidas.
+* O _loop_ principal lê o teclado, toma a ação e atualiza a tela.
+
 ### 3. Movendo nosso personagem
 

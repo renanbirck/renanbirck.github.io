@@ -77,6 +77,13 @@ Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&
 
     &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
         main()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Vamos explicar linha por linha:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;screen_width, screen_height&lt;/code&gt; são as dimensões da tela (no caso, 80x50).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tileset&lt;/code&gt; recebe o arquivo de ícones (ou, no nosso caso, a fonte a ser usada).&lt;/li&gt;
+&lt;li&gt;Após, é inicializado um terminal e um console nas dimensões acima definidas.&lt;/li&gt;
+&lt;li&gt;O &lt;em&gt;loop&lt;/em&gt; principal lê o teclado, toma a ação e atualiza a tela.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;3-movendo-nosso-personagem&#34;&gt;3. Movendo nosso personagem&lt;/h3&gt;
 - https://renanbirck.github.io/posts/fazendo-roguelike-pt1/ - 2021 Renan Birck Pinheiro</description>
         </item>
