@@ -45,7 +45,7 @@ Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&
 &lt;p&gt;Baixe o &lt;a href=&#34;http://rogueliketutorials.com/images/dejavu10x10_gs_tc.png&#34;&gt;arquivo&lt;/a&gt; e coloca na mesma pasta do projeto. Será necessário depois.&lt;/p&gt;
 &lt;h3 id=&#34;2-colocando-nosso-personagem-na-tela&#34;&gt;2. Colocando nosso personagem na tela&lt;/h3&gt;
 &lt;p&gt;Vamos criar um arquivo &lt;code&gt;main.py&lt;/code&gt;, com o conteúdo abaixo:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;#!/usr/bin/env python3&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;#!/usr/bin/env python3&lt;/span&gt;
     &lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;
     &lt;span style=&#34;color:#75715e&#34;&gt;# minirogue: a simple roguelike game for testing libtcod.&lt;/span&gt;
     &lt;span style=&#34;color:#75715e&#34;&gt;#&lt;/span&gt;
@@ -85,6 +85,7 @@ Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&
 &lt;li&gt;O &lt;em&gt;loop&lt;/em&gt; principal lê o teclado, toma a ação e atualiza a tela.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;3-movendo-nosso-personagem&#34;&gt;3. Movendo nosso personagem&lt;/h3&gt;
+&lt;p&gt;TODO: escrever esse trem aqui.&lt;/p&gt;
 - https://renanbirck.github.io/posts/fazendo-roguelike-pt1/ - 2021 Renan Birck Pinheiro</description>
         </item>
     

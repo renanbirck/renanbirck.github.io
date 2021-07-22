@@ -1,6 +1,6 @@
 ---
 title: "Fazendo um roguelike simples: parte 1"
-date: 2021-07-13T10:40:32-03:00
+date: 2021-07-22T10:40:32-03:00
 draft: false 
 tags: 
   - desenvolvimento
@@ -16,13 +16,13 @@ A definição de _roguelike_ é um jogo com níveis gerados de forma procedural 
 
 Dessa forma surgiram _roguelikes_ com temática pós-apocalipse ([Cataclysm: Dark Days Ahead](https://cataclysmdda.org/)), espaço ([FTL: Faster than Light](https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/)) e simulação ([Dwarf Fortress](https://www.bay12games.com/dwarves/)) entre outros; mas o mais clássico é o [nethack](https://nethack.org).
 
-Neste projetinho de tutorial, vamos criar um _roguelike_ simples: você precisa descer alguns níveis, matar monstros e recuperar a Chave que permiti-lo-á sair da masmorra. O conteúdo desse tutorial foi adaptado [daqui](http://rogueliketutorials.com/tutorials/tcod/v2/part-1/).
+Neste projetinho de tutorial, vamos criar um _roguelike_ simples: você precisa descer alguns níveis, matar monstros e recuperar a Chave que permiti-lo-á sair da masmorra. O conteúdo desse tutorial foi adaptado [daqui](http://rogueliketutorials.com/tutorials/tcod/v2/part-1/) e o código está disponível no [meu github](https://github.com/renanbirck/minirogue).
 
 A primeira parte irá colocar um personagem na tela e posteriormente irá movê-lo.
 
 ### 1. Instalando as bibliotecas
 
-Para desenvolver nosso _roguelike_, vamos utilizar Python e a `libtcod`. Esse tutorial presume que você usa um sistema operacional de verdade (leia-se: Linux, \*BSD, macOS etc...), mas talvez seja possível repeti-lo no Windows.
+Para desenvolver nosso _roguelike_, vamos utilizar Python e a `libtcod`. Esse tutorial presume que você usa um sistema operacional de verdade (leia-se: Linux, \*BSD, macOS etc...), mas provavelmente é possível repeti-lo no Windows.
 
 Não queremos mexer nas bibliotecas do sistema, então vamos usar [venv](https://docs.python.org/3/library/venv.html):
 
@@ -93,7 +93,33 @@ Vamos explicar, em linhas gerais:
 * `screen_width, screen_height` são as dimensões da tela (no caso, 80x50).
 * `tileset` recebe o arquivo de ícones (ou, no nosso caso, a fonte a ser usada).
 * Após, é inicializado um terminal e um console nas dimensões acima definidas.
-* O _loop_ principal lê o teclado, toma a ação e atualiza a tela.
+* No _loop_ principal, até que o jogo acabe, ocorre a sequência de eventos:
+** O _loop_ de eventos (`for event`) faz a leitura do teclado.
+** A tela é atualizada.
+
 
 ### 3. Movendo nosso personagem
+
+Não teria graça se não fosse possível mexer nosso personagem, né? Então, vamos criar duas variáveis para armazenar a posição dele.
+
+Logo depois da linha onde são definidos screen_width e screen_height, adicione uma linha `player_X, player_Y = int(screen_width/2), int(screen_height/2)`. E, na linha que desenha o personagem, trocamos a posição de `X` e `Y` para refletirem `player_X` e `player_Y`.
+
+Dentro do _loop_ de eventos, por sua vez, iremos fazer a leitura do teclado. Poderíamos fazer aqui dentro da `main`, mas vamos colocar essa lógica em arquivos separados. Crie o arquivo `actions.py` com o recheio a seguir:
+
+{{< highlight python >}}
+    class Action:
+        pass
+
+    class EscapeAction(Action):
+        pass
+
+    class MovementAction(Action):
+        def __init__(self, dx: int, dy: int):
+            super().__init__()
+
+            self.dx = dx
+            self.dy = dy
+{{< / highlight >}}
+
+Dentro desse arquivo iremos posteriormente implementar novas ações à medida em que o jogo for ficando cada vez mais complexo, e todas elas serão subclasses de `Action`. Após, vamos criar um tratador de ações, no arquivo `input_handler.py`, com o código a seguir:
 
