@@ -6,7 +6,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>pt-br</language>
     <copyright>2021 Renan Birck Pinheiro</copyright>
-    <lastBuildDate>Tue, 13 Jul 2021 10:40:32 -0300</lastBuildDate>
+    <lastBuildDate>Wed, 21 Jul 2021 10:40:32 -0300</lastBuildDate>
     
         <atom:link href="https://renanbirck.github.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,16 +15,16 @@
         <item>
         <title>Fazendo um roguelike simples: parte 1</title>
         <link>https://renanbirck.github.io/posts/fazendo-roguelike-pt1/</link>
-        <pubDate>Tue, 13 Jul 2021 10:40:32 -0300</pubDate>
+        <pubDate>Wed, 21 Jul 2021 10:40:32 -0300</pubDate>
         
         <guid>https://renanbirck.github.io/posts/fazendo-roguelike-pt1/</guid>
         <description>Tópicos Avançados em Temas Aleatórios https://renanbirck.github.io/posts/fazendo-roguelike-pt1/ -&lt;p&gt;Como jogador de &lt;a href=&#34;https://nethack.org&#34;&gt;nethack&lt;/a&gt; que sou, paixão que descobri durante o trabalho em casa forçado pela covid, decidi que era hora de eu desenvolver meu próprio roguelike&amp;hellip; mas o que é um roguelike, você caro leitor pode estar se perguntando?&lt;/p&gt;
 &lt;p&gt;A definição de &lt;em&gt;roguelike&lt;/em&gt; é um jogo com níveis gerados de forma procedural (isto é, por algoritmos e não de forma manual) e com morte permanente (morreu? que Deus o tenha); a maioria deles tem narrativa épica, mas isso não é um requisito do estilo em si e nem é preciso ser leitor desse gênero para apreciar os jogos. (eu mesmo comecei a ler &lt;em&gt;O Hobbit&lt;/em&gt;, mas dormi no meio).&lt;/p&gt;
 &lt;p&gt;Dessa forma surgiram &lt;em&gt;roguelikes&lt;/em&gt; com temática pós-apocalipse (&lt;a href=&#34;https://cataclysmdda.org/&#34;&gt;Cataclysm: Dark Days Ahead&lt;/a&gt;), espaço (&lt;a href=&#34;https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/&#34;&gt;FTL: Faster than Light&lt;/a&gt;) e simulação (&lt;a href=&#34;https://www.bay12games.com/dwarves/&#34;&gt;Dwarf Fortress&lt;/a&gt;) entre outros; mas o mais clássico é o &lt;a href=&#34;https://nethack.org&#34;&gt;nethack&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Neste projetinho de tutorial, vamos criar um &lt;em&gt;roguelike&lt;/em&gt; simples: você precisa descer alguns níveis, matar monstros e recuperar a Chave que permiti-lo-á sair da masmorra. O conteúdo desse tutorial foi adaptado &lt;a href=&#34;http://rogueliketutorials.com/tutorials/tcod/v2/part-1/&#34;&gt;daqui&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Neste projetinho de tutorial, vamos criar um &lt;em&gt;roguelike&lt;/em&gt; simples: você precisa descer alguns níveis, matar monstros e recuperar a Chave que permiti-lo-á sair da masmorra. O conteúdo desse tutorial foi adaptado &lt;a href=&#34;http://rogueliketutorials.com/tutorials/tcod/v2/part-1/&#34;&gt;daqui&lt;/a&gt; e o código está disponível no &lt;a href=&#34;https://github.com/renanbirck/minirogue&#34;&gt;meu github&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;A primeira parte irá colocar um personagem na tela e posteriormente irá movê-lo.&lt;/p&gt;
 &lt;h3 id=&#34;1-instalando-as-bibliotecas&#34;&gt;1. Instalando as bibliotecas&lt;/h3&gt;
-&lt;p&gt;Para desenvolver nosso &lt;em&gt;roguelike&lt;/em&gt;, vamos utilizar Python e a &lt;code&gt;libtcod&lt;/code&gt;. Esse tutorial presume que você usa um sistema operacional de verdade (leia-se: Linux, *BSD, macOS etc&amp;hellip;), mas talvez seja possível repeti-lo no Windows.&lt;/p&gt;
+&lt;p&gt;Para desenvolver nosso &lt;em&gt;roguelike&lt;/em&gt;, vamos utilizar Python e a &lt;code&gt;libtcod&lt;/code&gt;. Esse tutorial presume que você usa um sistema operacional de verdade (leia-se: Linux, *BSD, macOS etc&amp;hellip;), mas provavelmente é possível repeti-lo no Windows.&lt;/p&gt;
 &lt;p&gt;Não queremos mexer nas bibliotecas do sistema, então vamos usar &lt;a href=&#34;https://docs.python.org/3/library/venv.html&#34;&gt;venv&lt;/a&gt;:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;python3 -m venv ~/src/minirogue   # Adaptar conforme a organização de diretórios do seu projeto.
 &lt;/code&gt;&lt;/pre&gt;
@@ -82,10 +82,28 @@ Type &amp;quot;help&amp;quot;, &amp;quot;copyright&amp;quot;, &amp;quot;credits&
 &lt;li&gt;&lt;code&gt;screen_width, screen_height&lt;/code&gt; são as dimensões da tela (no caso, 80x50).&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;tileset&lt;/code&gt; recebe o arquivo de ícones (ou, no nosso caso, a fonte a ser usada).&lt;/li&gt;
 &lt;li&gt;Após, é inicializado um terminal e um console nas dimensões acima definidas.&lt;/li&gt;
-&lt;li&gt;O &lt;em&gt;loop&lt;/em&gt; principal lê o teclado, toma a ação e atualiza a tela.&lt;/li&gt;
+&lt;li&gt;No &lt;em&gt;loop&lt;/em&gt; principal, até que o jogo acabe, ocorre a sequência de eventos:
+** O &lt;em&gt;loop&lt;/em&gt; de eventos (&lt;code&gt;for event&lt;/code&gt;) faz a leitura do teclado.
+** A tela é atualizada.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;3-movendo-nosso-personagem&#34;&gt;3. Movendo nosso personagem&lt;/h3&gt;
-&lt;p&gt;TODO: escrever esse trem aqui.&lt;/p&gt;
+&lt;p&gt;Não teria graça se não fosse possível mexer nosso personagem, né? Então, vamos criar duas variáveis para armazenar a posição dele.&lt;/p&gt;
+&lt;p&gt;Logo depois da linha onde são definidos screen_width e screen_height, adicione uma linha &lt;code&gt;player_X, player_Y = int(screen_width/2), int(screen_height/2)&lt;/code&gt;. E, na linha que desenha o personagem, trocamos a posição de &lt;code&gt;X&lt;/code&gt; e &lt;code&gt;Y&lt;/code&gt; para refletirem &lt;code&gt;player_X&lt;/code&gt; e &lt;code&gt;player_Y&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Dentro do &lt;em&gt;loop&lt;/em&gt; de eventos, por sua vez, iremos fazer a leitura do teclado. Poderíamos fazer aqui dentro da &lt;code&gt;main&lt;/code&gt;, mas vamos colocar essa lógica em arquivos separados. Crie o arquivo &lt;code&gt;actions.py&lt;/code&gt; com o recheio a seguir:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Action&lt;/span&gt;:
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;pass&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;EscapeAction&lt;/span&gt;(Action):
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;pass&lt;/span&gt;
+
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;MovementAction&lt;/span&gt;(Action):
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; __init__(self, dx: int, dy: int):
+            super()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;__init__()
+
+            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dx &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; dx
+            self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;dy &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; dy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dentro desse arquivo iremos posteriormente implementar novas ações à medida em que o jogo for ficando cada vez mais complexo, e todas elas serão subclasses de &lt;code&gt;Action&lt;/code&gt;. Após, vamos criar um tratador de ações, no arquivo &lt;code&gt;input_handler.py&lt;/code&gt;, com o código a seguir:&lt;/p&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
 - https://renanbirck.github.io/posts/fazendo-roguelike-pt1/ - 2021 Renan Birck Pinheiro</description>
         </item>
     

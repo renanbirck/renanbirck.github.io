@@ -1,6 +1,6 @@
 ---
 title: "Fazendo um roguelike simples: parte 1"
-date: 2021-07-22T10:40:32-03:00
+date: 2021-07-21T10:40:32-03:00
 draft: false 
 tags: 
   - desenvolvimento
@@ -123,3 +123,4 @@ Dentro do _loop_ de eventos, por sua vez, iremos fazer a leitura do teclado. Pod
 
 Dentro desse arquivo iremos posteriormente implementar novas ações à medida em que o jogo for ficando cada vez mais complexo, e todas elas serão subclasses de `Action`. Após, vamos criar um tratador de ações, no arquivo `input_handler.py`, com o código a seguir:
 
+...

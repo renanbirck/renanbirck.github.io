@@ -515,7 +515,7 @@ Criado a partir de <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer 
                     <div class="post-meta">
                         
                         <time itemprop="datePublished">
-                            2021-07-13 10:40
+                            2021-07-21 10:40
                         </time>
                         
 
@@ -546,10 +546,10 @@ Criado a partir de <a href="https://mak1t0.cc/" target="_blank" rel="noreferrer 
                     <p>Como jogador de <a href="https://nethack.org">nethack</a> que sou, paixão que descobri durante o trabalho em casa forçado pela covid, decidi que era hora de eu desenvolver meu próprio roguelike&hellip; mas o que é um roguelike, você caro leitor pode estar se perguntando?</p>
 <p>A definição de <em>roguelike</em> é um jogo com níveis gerados de forma procedural (isto é, por algoritmos e não de forma manual) e com morte permanente (morreu? que Deus o tenha); a maioria deles tem narrativa épica, mas isso não é um requisito do estilo em si e nem é preciso ser leitor desse gênero para apreciar os jogos. (eu mesmo comecei a ler <em>O Hobbit</em>, mas dormi no meio).</p>
 <p>Dessa forma surgiram <em>roguelikes</em> com temática pós-apocalipse (<a href="https://cataclysmdda.org/">Cataclysm: Dark Days Ahead</a>), espaço (<a href="https://store.steampowered.com/app/212680/FTL_Faster_Than_Light/">FTL: Faster than Light</a>) e simulação (<a href="https://www.bay12games.com/dwarves/">Dwarf Fortress</a>) entre outros; mas o mais clássico é o <a href="https://nethack.org">nethack</a>.</p>
-<p>Neste projetinho de tutorial, vamos criar um <em>roguelike</em> simples: você precisa descer alguns níveis, matar monstros e recuperar a Chave que permiti-lo-á sair da masmorra. O conteúdo desse tutorial foi adaptado <a href="http://rogueliketutorials.com/tutorials/tcod/v2/part-1/">daqui</a>.</p>
+<p>Neste projetinho de tutorial, vamos criar um <em>roguelike</em> simples: você precisa descer alguns níveis, matar monstros e recuperar a Chave que permiti-lo-á sair da masmorra. O conteúdo desse tutorial foi adaptado <a href="http://rogueliketutorials.com/tutorials/tcod/v2/part-1/">daqui</a> e o código está disponível no <a href="https://github.com/renanbirck/minirogue">meu github</a>.</p>
 <p>A primeira parte irá colocar um personagem na tela e posteriormente irá movê-lo.</p>
 <h3 id="1-instalando-as-bibliotecas">1. Instalando as bibliotecas</h3>
-<p>Para desenvolver nosso <em>roguelike</em>, vamos utilizar Python e a <code>libtcod</code>. Esse tutorial presume que você usa um sistema operacional de verdade (leia-se: Linux, *BSD, macOS etc&hellip;), mas talvez seja possível repeti-lo no Windows.</p>
+<p>Para desenvolver nosso <em>roguelike</em>, vamos utilizar Python e a <code>libtcod</code>. Esse tutorial presume que você usa um sistema operacional de verdade (leia-se: Linux, *BSD, macOS etc&hellip;), mas provavelmente é possível repeti-lo no Windows.</p>
 <p>Não queremos mexer nas bibliotecas do sistema, então vamos usar <a href="https://docs.python.org/3/library/venv.html">venv</a>:</p>
 <pre><code>python3 -m venv ~/src/minirogue   # Adaptar conforme a organização de diretórios do seu projeto.
 </code></pre>
@@ -607,14 +607,32 @@ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;licen
 <li><code>screen_width, screen_height</code> são as dimensões da tela (no caso, 80x50).</li>
 <li><code>tileset</code> recebe o arquivo de ícones (ou, no nosso caso, a fonte a ser usada).</li>
 <li>Após, é inicializado um terminal e um console nas dimensões acima definidas.</li>
-<li>O <em>loop</em> principal lê o teclado, toma a ação e atualiza a tela.</li>
+<li>No <em>loop</em> principal, até que o jogo acabe, ocorre a sequência de eventos:
+** O <em>loop</em> de eventos (<code>for event</code>) faz a leitura do teclado.
+** A tela é atualizada.</li>
 </ul>
 <h3 id="3-movendo-nosso-personagem">3. Movendo nosso personagem</h3>
-<p>TODO: escrever esse trem aqui.</p>
+<p>Não teria graça se não fosse possível mexer nosso personagem, né? Então, vamos criar duas variáveis para armazenar a posição dele.</p>
+<p>Logo depois da linha onde são definidos screen_width e screen_height, adicione uma linha <code>player_X, player_Y = int(screen_width/2), int(screen_height/2)</code>. E, na linha que desenha o personagem, trocamos a posição de <code>X</code> e <code>Y</code> para refletirem <code>player_X</code> e <code>player_Y</code>.</p>
+<p>Dentro do <em>loop</em> de eventos, por sua vez, iremos fazer a leitura do teclado. Poderíamos fazer aqui dentro da <code>main</code>, mas vamos colocar essa lógica em arquivos separados. Crie o arquivo <code>actions.py</code> com o recheio a seguir:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Action</span>:
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EscapeAction</span>(Action):
+        <span style="color:#66d9ef">pass</span>
+
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MovementAction</span>(Action):
+        <span style="color:#66d9ef">def</span> __init__(self, dx: int, dy: int):
+            super()<span style="color:#f92672">.</span>__init__()
+
+            self<span style="color:#f92672">.</span>dx <span style="color:#f92672">=</span> dx
+            self<span style="color:#f92672">.</span>dy <span style="color:#f92672">=</span> dy</code></pre></div>
+<p>Dentro desse arquivo iremos posteriormente implementar novas ações à medida em que o jogo for ficando cada vez mais complexo, e todas elas serão subclasses de <code>Action</code>. Após, vamos criar um tratador de ações, no arquivo <code>input_handler.py</code>, com o código a seguir:</p>
+<p>&hellip;</p>
 
                     
                     <HR width="100%" id="EOF">
-		    <p style="color:#777;">Última modificação em 2021-07-13</p>
+		    <p style="color:#777;">Última modificação em 2021-07-21</p>
                     
                 </div>
             </div>
